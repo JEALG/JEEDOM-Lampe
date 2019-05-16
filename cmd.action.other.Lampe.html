@@ -1,20 +1,20 @@
-<div style="width:90px;min-height:62px;margin-bottom: 0px" class="cmd reportModeHidden #history# tooltips cmd-widget cursor" data-type="action" data-subtype="other" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" data-version="#version#" title="#collectDate#">
+<div style="width:90px;min-height:62px;" class="cmd tooltips cmd-widget cursor #history#" data-type="action" data-subtype="other" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#">
     <!-- Info Widget
         Basé sur les widget de 		: ksoul78 / jimmy / snow51
         Mise à jour 				: JAG 20190505 : Simplification code
     -->
-    <div class="row title #hide_name#">
+    <div class="row">
         <center>
-            <div class='cmdName' id="cmdName#id#" style="font-weight:bold;font-size:10px;#hideCmdName#;margin-bottom: 0px">#valueName#</div>
-            <div class="content-sm ">
-                <span class="iconCmd#uid# action" title="#name#"></span>
+            <div class="title #hide_name#">
+                <div  class="cmdName">#valueName#</div>
             </div>
-            <div class="value">
-                <span class="timeCmd#uid# timeCmd label label-default value"title=""></span>
+            <div class="content-sm ">
+                <span class="iconCmd#id#" title="#name#"></span>
             </div>
         </center>
     </div>
-<script>
+    <script>
+        jeedom.cmd.update['#id#'] = function(_options){
         // Paramètrage du logo
   			// Valeur pour ON ou 1
       			var srcImglogo	    = ('#logo#'!='#'+'logo#') ? "#logo#" : "Lampe";
@@ -25,43 +25,28 @@
   				var srcImgSize 		= 'height='+srcImgHeight+'px width='+srcImgWidth+'px';
 		// Paramétrage des images
 				var srcImgURL 		= 'plugins/widget/core/template/dashboard/cmd.action.other.Alarme-Activation/';
-      			var srcImgOn 		= srcImgURL + srcImglogo +'-ON.'+ srcImglogo_T; 	// Pour Valeur = 1
-      			var srcImgOff 		= srcImgURL + srcImglogo +'-OFF.'+ srcImglogo_T;  // Pour valeur = 0   T;   
+      			var srcImgOn 		= srcImgURL + srcImglogo +'-ON.'+ srcImglogo_T;	        // Pour Valeur = 1
+      			var srcImgOff 		= srcImgURL + srcImglogo +'-OFF.'+ srcImglogo_T;     // Pour valeur = 0  
 
-        if(jeedom.cmd.normalizeName('#name#') == 'on'){
-            if('#state#' != ''){
-                $('.cmd[data-cmd_uid=#uid#] .iconCmd#uid#').empty().append('<img src="'+srcImgOff+'" '+srcImgSize+'>');
-            }else{
-                $('.cmd[data-cmd_uid=#uid#] .iconCmd#uid#').empty().append('<img src="'+srcImgOn+'" '+srcImgSize+'>');
-            }
-        }else{
-            if('#state#' != ''){
-                $('.cmd[data-cmd_uid=#uid#] .iconCmd#uid#').empty().append('<img src="'+srcImgOn+'" '+srcImgSize+'>');
-            }else{
-                $('.cmd[data-cmd_uid=#uid#] .iconCmd#uid#').empty().append('<img src="'+srcImgOff+'" '+srcImgSize+'>');
-            }
-        }
-        
-        jeedom.cmd.update['#id#'] = function(_options){
-            if(parseInt(_options.display_value) != 'NaN'){
-                if(jeedom.cmd.normalizeName('#name#') == 'on'){
-                    if(parseInt(_options.display_value) >= 1 ) {
-                        $('.cmd[data-cmd_uid=#uid#]').hide();
-                    }else{
-                        $('.cmd[data-cmd_uid=#uid#]').show();
-                    }
+            if (_options.display_value == '1' || _options.display_value == 1 || _options.display_value == '99' || _options.display_value == 99 || _options.display_value == 'on') {
+                if (jeedom.cmd.normalizeName('#name#') == 'on') {
+                    $('.cmd[data-cmd_id=#id#]').hide();
                 }else{
-                    if(parseInt(_options.display_value) <= 0 ) {
-                        $('.cmd[data-cmd_uid=#uid#]').hide();
-                    }else{
-                        $('.cmd[data-cmd_uid=#uid#]').show();
-                    }
+                    $('.cmd[data-cmd_id=#id#]').show();
+                    $('.cmd[data-cmd_id=#id#] .iconCmd#id#').empty().append('<img src="'+srcImgOn+'" '+srcImgSize+'>');
+                }
+            } else {
+                if (jeedom.cmd.normalizeName('#name#') == 'off') {
+                    $('.cmd[data-cmd_id=#id#]').hide();
+                }else{
+                    $('.cmd[data-cmd_id=#id#]').show();
+                    $('.cmd[data-cmd_id=#id#] .iconCmd#id#').empty().append('<img src="'+srcImgOff+'" '+srcImgSize+'>');
                 }
             }
         }
         jeedom.cmd.update['#id#']({display_value:'#state#'});
-        $('.cmd[data-cmd_uid=#uid#]:last .action').on('click', function () {
+        $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').off().on('click', function () {
             jeedom.cmd.execute({id: '#id#'});
         });
     </script>
-</div>
+</diV>
