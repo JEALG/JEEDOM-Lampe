@@ -1,7 +1,7 @@
 <div style="width:90px;min-height:62px;" class="cmd tooltips cmd-widget cursor #history#" data-type="action" data-subtype="other" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#">
     <!-- Info Widget
         Basé sur les widget de 		: ksoul78 / jimmy / snow51
-        Mise à jour 				: JAG 20190516 : Simplification code
+        Mise à jour 				: JAG 20190907 : Normalisation nom images => Merci à mich0111
     -->
     <div class="row">
         <center>
@@ -17,7 +17,7 @@
         jeedom.cmd.update['#id#'] = function(_options){
         // Paramètrage du logo
   			// Valeur pour ON ou 1
-      			var srcImglogo	    = ('#logo#'!='#'+'logo#') ? "#logo#" : "Lampe";
+      			var srcImglogo	    = ('#logo#'!='#'+'logo#') ? "#logo#" : "la_ampoule";
       			var srcImglogo_T 	= ('#logo_type#'!='#'+'logo_type#') ? "#logo_type#" : "png";
 		// Paramètre "sizeh" & "sizew"
 				var srcImgHeight	= is_numeric('#sizeh#') ? parseFloat('#sizeh#'):80;
