@@ -31,14 +31,14 @@
                     $('.cmd[data-cmd_id=#id#]').hide();
                 }else{
                     $('.cmd[data-cmd_id=#id#]').show();
-                    $('.cmd[data-cmd_id=#id#] .iconCmd#id#').empty().append('<img src="'+srcImgURL +srcImglogo +'-ON.'+ srcImglogo_T+'" '+srcImgSize+'>');
+                    $('.cmd[data-cmd_id=#id#] .iconCmd#id#').empty().append('<img src="'+srcImgURL +srcImglogo +'_ON.'+ srcImglogo_T+'" '+srcImgSize+'>');
                 }
             } else {
                 if (jeedom.cmd.normalizeName('#name#') == 'off') {
                     $('.cmd[data-cmd_id=#id#]').hide();
                 }else{
                     $('.cmd[data-cmd_id=#id#]').show();
-                    $('.cmd[data-cmd_id=#id#] .iconCmd#id#').empty().append('<img src="'+srcImgURL +srcImglogo +'-OFF.'+ srcImglogo_T+'" '+srcImgSize+'>');
+                    $('.cmd[data-cmd_id=#id#] .iconCmd#id#').empty().append('<img src="'+srcImgURL +srcImglogo +'_OFF.'+ srcImglogo_T+'" '+srcImgSize+'>');
                 }
             }
         }
